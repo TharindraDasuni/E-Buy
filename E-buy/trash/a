@@ -1,0 +1,59 @@
+
+function updateProfile(){
+    var profile_img = document.getElementById("p_img").files[0]; 
+    var fname = document.getElementById("fname").value;
+    var lname = document.getElementById("lname").value;
+    var moblie = document.getElementById("mobile").value;
+    var gender = document.getElementById("gender").value;
+    var address_line1 = document.getElementById("a_line1").value;
+    var address_line2 = document.getElementById("a_line2").value;
+    var postal_code = document.getElementById("pc").value;
+    var city  = document.getElementById("city").value;
+    var district = document.getElementById("district").value;    
+    var province = document.getElementById("province").value;
+
+    alert(profile_img);
+    alert(fname);
+    alert(lname);
+    alert(moblie);
+    alert(gender);
+    alert(email);
+    alert(password);
+    alert(address_line1);
+    alert(address_line2);
+    alert(postal_code);
+    alert(city);
+    alert(district);
+    alert(province);
+   
+    var f = new FormData();
+    f.append("profileImg",profile_img.files[0]);
+    f.append("firstName",fname.value);
+    f.append("lastName",lname.value);
+    f.append("m",moblie.value);
+    f.append("e",email.value);
+    f.append("pw",password.value);
+    f.append("g",gender.value);
+    f.append("al1",address_line1.value);
+    f.append("al2",address_line2.value);
+    f.append("pc",postal_code.value);
+    f.append("c",city.value);
+    f.append("d",district.value);
+    f.append("pr",province.value);
+
+    var r = new XMLHttpRequest();
+
+    r.onreadystatechange = function () {
+        if(r.readyState == 4 && r.status == 200){
+            var t = r.responseText;
+            alert(t);
+
+        }
+
+    }
+
+    r.open("POST","profileUpdateProcess.php",true);
+    r.send(f);
+
+
+}
